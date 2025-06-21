@@ -40,7 +40,7 @@ public class Main {
         try {
             String input = Files.readString(path);
             Solution daySolution = getSolution(year, dayNum);
-            System.out.println(year + " Day" + dayNum + "\n\tPart1:" + daySolution.solvePart1(input) + "\n\tPart2: " + daySolution.solvePart2(input));
+            System.out.println(year + " Day" + dayNum + "\n\tPart1: " + daySolution.solvePart1(input) + "\n\tPart2: " + daySolution.solvePart2(input));
         } catch (ClassNotFoundException e) {
             System.out.println("No solution found for year=" + year + " day=" + dayNum);
         } catch (IOException e) {
@@ -52,7 +52,8 @@ public class Main {
     }
 
     private static Solution getSolution(String year, int dayNum) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        Class<?> myClass = Class.forName(year + ".Day" + dayNum);
+        String day = ".Day" + dayNum;
+        Class<?> myClass = Class.forName(year + day + day);
         Constructor<?> constructor = myClass.getConstructor();
         Object instance = constructor.newInstance();
         return (Solution) instance;
